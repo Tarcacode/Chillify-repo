@@ -1,0 +1,37 @@
+﻿@page "/signin"
+
+<PageTitle>Sign in |Chillify</PageTitle>
+
+<h1>Sign in or sign up</h1>
+
+<p>Hello and welcome on your favorite wellness application : Chillify.</p>
+<p>In order to access the website, log in or register a new account :</p>
+
+<button @onclick="ToggleLogin" class="btn btn-outline-primary" title="Login">Log in</button>
+<button @onclick="ToggleRegister" class="btn btn-outline-primary" title="Register">Register</button>
+
+
+@if (displayLogin)
+{
+    <Login />
+}
+else if (displayRegister)
+{
+    <Register />
+}
+
+@code {
+    private bool displayLogin = false;
+    private bool displayRegister = false;
+
+    private void ToggleLogin()
+    {
+        displayRegister = false;
+        displayLogin = !displayLogin;
+    }
+    private void ToggleRegister()
+    {
+        displayLogin = false;
+        displayRegister = !displayRegister;
+    }
+}
