@@ -37,7 +37,7 @@ public class ChillContext : DbContext
         modelBuilder.Entity<HistoricMemberAddress>()
             .HasOne(hma => hma.HistoricMember)
             .WithMany(hma => hma.HistoricMemberAddresses)
-            .HasForeignKey(ma => ma.HistoricMemberId);
+            .HasForeignKey(hma => hma.HistoricMemberId);
 
         modelBuilder.Entity<HistoricMemberAddress>()
             .HasOne(hma => hma.HistoricAddress)
