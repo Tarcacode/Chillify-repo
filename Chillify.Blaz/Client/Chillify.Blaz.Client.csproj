@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chillify.Models\Chillify.Models.csproj" />
+    <ProjectReference Include="..\Shared\Chillify.Blaz.Shared.csproj" />
   </ItemGroup>
 
 </Project>

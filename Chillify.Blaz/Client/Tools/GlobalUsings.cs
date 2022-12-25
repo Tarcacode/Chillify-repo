@@ -1,0 +1,1 @@
+﻿global using Chillify.Blaz.Shared.Models.Auth;
