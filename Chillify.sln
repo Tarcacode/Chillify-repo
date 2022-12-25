@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Api", "Chillify.Api\Chillify.Api.csproj", "{50E4904F-7B57-4442-AEC5-DB58D8167C25}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Dal", "Chillify.Dal\Chillify.Dal.csproj", "{317F2762-F1B9-4589-B88B-655337878326}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Models", "Chillify.Models\Chillify.Models.csproj", "{6222C0F6-1778-4CD4-955C-507C717FBF35}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Entities", "Chillify.Entities\Chillify.Entities.csproj", "{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Wasm", "Chillify.Wasm\Chillify.Wasm.csproj", "{93BBA50A-579A-4904-86D9-F8872DC1EA58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.Blaz.Server", "Chillify.Blaz\Server\Chillify.Blaz.Server.csproj", "{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}"
 EndProject
@@ -25,26 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{50E4904F-7B57-4442-AEC5-DB58D8167C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50E4904F-7B57-4442-AEC5-DB58D8167C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50E4904F-7B57-4442-AEC5-DB58D8167C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50E4904F-7B57-4442-AEC5-DB58D8167C25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{317F2762-F1B9-4589-B88B-655337878326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{317F2762-F1B9-4589-B88B-655337878326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{317F2762-F1B9-4589-B88B-655337878326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{317F2762-F1B9-4589-B88B-655337878326}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6222C0F6-1778-4CD4-955C-507C717FBF35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6222C0F6-1778-4CD4-955C-507C717FBF35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6222C0F6-1778-4CD4-955C-507C717FBF35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6222C0F6-1778-4CD4-955C-507C717FBF35}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93BBA50A-579A-4904-86D9-F8872DC1EA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93BBA50A-579A-4904-86D9-F8872DC1EA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93BBA50A-579A-4904-86D9-F8872DC1EA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93BBA50A-579A-4904-86D9-F8872DC1EA58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
