@@ -1,5 +1,42 @@
-﻿<h2>Log in</h2>
+﻿@inject IAuthService AuthService
+<h2>Log in</h2>
+
+<div>
+    <EditForm Model="_login" OnValidSubmit="HandleLogin" class="p-4 p-md-5 border rounded-3 bg-light">
+        <DataAnnotationsValidator />
+
+        <label for="EmailAddress">Email Address:</label>
+        <InputText id="EmailAddress" @bind-Value="@_login.EmailAddress" class="form-control" />
+
+        <label for="Password">Password:</label>
+        <InputText id="Password" type="password" @bind-Value="@_login.Password" class="form-control" />
+
+        <button type="submit" class="btn btn-success mt-2" title="Login">Log in</button>
+
+        @if (string.IsNullOrEmpty(message) == false)
+        {
+            <span class="text-danger"> ! @message</span>
+        }
+
+        <ValidationSummary />
+    </EditForm>
+</div>
 
 @code {
+    private LoginDto _login = new();
+    private string? message;
 
+    private async Task HandleLogin()
+    {
+        ServiceResponse<string> result = await AuthService.Login(_login);
+
+        if (result.Success == false)
+        {
+            message = result.Message;
+        }
+        else
+        {
+            _login = new();
+        }
+    }
 }
