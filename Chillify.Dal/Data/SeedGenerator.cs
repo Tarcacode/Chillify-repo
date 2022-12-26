@@ -20,7 +20,7 @@ public class SeedGenerator
                 Id = index,
                 EmailAddress = $"member{index}@gmail.com",
                 Pseudo = $"Member{index}",
-                PswdHash = "Ch1llify",
+                PswdHash = "$2a$11$WN.FVekmx7AXFXzLXMv0DOw4vWx7xODN4.JIaoqeUu2YjIM55/7CG",
                 FirstName = NextFirstName(),
                 LastName = NextLastName(),
                 BirthDate = NextDate(),

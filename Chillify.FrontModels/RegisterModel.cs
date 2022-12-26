@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel;
 
-namespace Chillify.Blaz.Shared.Models.Auth;
+namespace Chillify.FrontModels;
 
 public class RegisterModel
 {

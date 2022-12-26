@@ -13,6 +13,9 @@ public static class DIServices
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
+        services.AddScoped<IMemberRepo, MemberRepo>();
+        services.AddScoped<IAuthService, AuthService>();
+
         services.AddDbContext<ChillContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default")));
 
         return services;

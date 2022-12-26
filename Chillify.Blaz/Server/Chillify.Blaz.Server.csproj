@@ -16,13 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Chillify.Core\Chillify.Core.csproj" />
     <ProjectReference Include="..\..\Chillify.Dal\Chillify.Dal.csproj" />
     <ProjectReference Include="..\Client\Chillify.Blaz.Client.csproj" />
     <ProjectReference Include="..\Shared\Chillify.Blaz.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

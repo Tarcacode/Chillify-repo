@@ -1,4 +1,6 @@
-﻿<h2>Register</h2>
+﻿@inject IAuthService AuthService
+
+<h2>Register</h2>
 
 <div>
     <EditForm Model="_registerModel" OnValidSubmit="HandleRegistration" class="p-4 p-md-5 border rounded-3 bg-light">
@@ -20,7 +22,7 @@
 
         @if (string.IsNullOrEmpty(_message) == false)
         {
-            <span class="text-danger">! @_message</span>
+            <span class="text-danger"> /!\ @_message</span>
         }
 
         <ValidationSummary />
@@ -33,6 +35,16 @@
 
     private async Task HandleRegistration()
     {
+        // TODO: Create services
+        ServiceResponse<int> result = await AuthService.Register(_registerModel);
 
+        if (result.Success == false)
+        {
+            _message = result.Message;
+        }
+        else
+        {
+            _registerModel = new();
+        }
     }
 }

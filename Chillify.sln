@@ -7,11 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Dal", "Chillify.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Entities", "Chillify.Entities\Chillify.Entities.csproj", "{28C699D1-3FD7-4FAF-B6F9-5855F8D09BFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.Blaz.Server", "Chillify.Blaz\Server\Chillify.Blaz.Server.csproj", "{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Blaz.Server", "Chillify.Blaz\Server\Chillify.Blaz.Server.csproj", "{F1D3C9CE-7DBE-45A5-8DFB-81E5FA699E3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.Blaz.Client", "Chillify.Blaz\Client\Chillify.Blaz.Client.csproj", "{6A01868F-D06C-4C5D-AF6D-D74B818E408B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Blaz.Client", "Chillify.Blaz\Client\Chillify.Blaz.Client.csproj", "{6A01868F-D06C-4C5D-AF6D-D74B818E408B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.Blaz.Shared", "Chillify.Blaz\Shared\Chillify.Blaz.Shared.csproj", "{655ABA71-2B9D-4C27-8883-38DDA8FB80CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Blaz.Shared", "Chillify.Blaz\Shared\Chillify.Blaz.Shared.csproj", "{655ABA71-2B9D-4C27-8883-38DDA8FB80CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Core", "Chillify.Core\Chillify.Core.csproj", "{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.FrontServices", "Chillify.FrontServices\Chillify.FrontServices.csproj", "{2A733D87-7B49-4E73-8546-81A3E9262AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.FrontModels", "Chillify.FrontModels\Chillify.FrontModels.csproj", "{0ACB0E9E-A078-4798-AE66-677951351279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{655ABA71-2B9D-4C27-8883-38DDA8FB80CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{655ABA71-2B9D-4C27-8883-38DDA8FB80CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{655ABA71-2B9D-4C27-8883-38DDA8FB80CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A733D87-7B49-4E73-8546-81A3E9262AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A733D87-7B49-4E73-8546-81A3E9262AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A733D87-7B49-4E73-8546-81A3E9262AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A733D87-7B49-4E73-8546-81A3E9262AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ACB0E9E-A078-4798-AE66-677951351279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACB0E9E-A078-4798-AE66-677951351279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACB0E9E-A078-4798-AE66-677951351279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACB0E9E-A078-4798-AE66-677951351279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
