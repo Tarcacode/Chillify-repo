@@ -13,9 +13,9 @@
 
         <button type="submit" class="btn btn-success mt-2" title="Login">Log in</button>
 
-        @if (string.IsNullOrEmpty(message) == false)
+        @if (string.IsNullOrEmpty(_message) == false)
         {
-            <span class="text-danger"> ! @message</span>
+            <span class="text-danger"> /!\ @_message</span>
         }
 
         <ValidationSummary />
@@ -24,7 +24,7 @@
 
 @code {
     private LoginDto _login = new();
-    private string? message;
+    private string? _message;
 
     private async Task HandleLogin()
     {
@@ -32,7 +32,7 @@
 
         if (result.Success == false)
         {
-            message = result.Message;
+            _message = result.Message;
         }
         else
         {
