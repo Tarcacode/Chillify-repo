@@ -35,7 +35,6 @@
 
     private async Task HandleRegistration()
     {
-        // TODO: Create services
         ServiceResponse<int> result = await AuthService.Register(_registerModel);
 
         if (result.Success == false)

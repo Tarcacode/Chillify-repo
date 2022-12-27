@@ -33,6 +33,8 @@ public class AuthService : IAuthService
 
         ServiceResponse<string> result = await response.Content.ReadFromJsonAsync<ServiceResponse<string>>();
 
+        // TODO: Put here the JWT in the browser storage
+        // TODO: And look how to pass JWT in request header
         return result;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Chillify.Blaz.Shared.Dtos.Auth;
 using Chillify.Blaz.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chillify.Blaz.Server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -24,6 +26,8 @@ namespace Chillify.Blaz.Server.Controllers
 
             return response.Success == false ? BadRequest(response) : Ok(response);
         }
+
+        [AllowAnonymous]
         [HttpPost]
         [Route("login")]
         public IActionResult Login(LoginDto loginDto)

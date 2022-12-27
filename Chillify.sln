@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Blaz.Shared", "Chi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.Core", "Chillify.Core\Chillify.Core.csproj", "{8EC1D3AA-5A95-4B9C-BE64-F8F9E598074B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.FrontServices", "Chillify.FrontServices\Chillify.FrontServices.csproj", "{2A733D87-7B49-4E73-8546-81A3E9262AD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.FrontServices", "Chillify.FrontServices\Chillify.FrontServices.csproj", "{2A733D87-7B49-4E73-8546-81A3E9262AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.FrontModels", "Chillify.FrontModels\Chillify.FrontModels.csproj", "{0ACB0E9E-A078-4798-AE66-677951351279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.FrontModels", "Chillify.FrontModels\Chillify.FrontModels.csproj", "{0ACB0E9E-A078-4798-AE66-677951351279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.BackModels", "Chillify.BackModels\Chillify.BackModels.csproj", "{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{0ACB0E9E-A078-4798-AE66-677951351279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACB0E9E-A078-4798-AE66-677951351279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACB0E9E-A078-4798-AE66-677951351279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

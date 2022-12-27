@@ -1,12 +1,19 @@
-﻿namespace Chillify.Core.Services;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace Chillify.Core.Services;
 
 public class AuthService : IAuthService
 {
     private readonly IMemberRepo _memberRepo;
-
-    public AuthService(IMemberRepo memberRepo)
+    private readonly IConfiguration _iconfiguration;
+    public AuthService(IMemberRepo memberRepo, IConfiguration iconfiguration)
     {
         _memberRepo = memberRepo;
+        _iconfiguration = iconfiguration;
     }
     public ServiceResponse<int> Register(RegisterDto registerDto)
     {
@@ -65,6 +72,7 @@ public class AuthService : IAuthService
             else
             {
                 response.Message = "Successful login";
+                response.Data = CreateJwt(member);
             }
         }
 
@@ -87,5 +95,33 @@ public class AuthService : IAuthService
     private bool Verify(string password, string hash)
     {
         return BCrypt.Net.BCrypt.Verify(password, hash);
+    }
+
+    private string CreateJwt(Member member)
+    {
+        JwtSecurityTokenHandler tokenHandler = new();
+
+        byte[] tokenKey = Encoding.UTF8.GetBytes(_iconfiguration["JWT:Key"]);
+
+        SecurityTokenDescriptor tokenDescriptor = new()
+        {
+            Subject = new ClaimsIdentity(new Claim[]
+            {
+                new Claim(ClaimTypes.Name, member.Pseudo),
+                new Claim(ClaimTypes.Email, member.EmailAddress),
+                new Claim(ClaimTypes.Role, member.RoleId.ToString())
+            }),
+            Expires = DateTime.UtcNow.AddMinutes(10),
+            SigningCredentials= new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
+
+        //return new JWToken()
+        //{
+        //    Token = tokenHandler.WriteToken(token)
+        //};
     }
 }

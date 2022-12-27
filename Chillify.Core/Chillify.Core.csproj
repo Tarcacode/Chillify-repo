@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Chillify.BackModels\Chillify.BackModels.csproj" />
     <ProjectReference Include="..\Chillify.Blaz\Shared\Chillify.Blaz.Shared.csproj" />
     <ProjectReference Include="..\Chillify.Dal\Chillify.Dal.csproj" />
   </ItemGroup>
