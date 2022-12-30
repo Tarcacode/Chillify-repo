@@ -11,9 +11,20 @@ public class MemberRepo : IMemberRepo
     {
         _context = context;
     }
+    
+    public List<Member> GetMembers()
+    {
+        return _context.Members.ToList();
+    }
     public Member GetMember(string email)
     {
         Member member = _context.Members.SingleOrDefault(m => m.EmailAddress.ToLower().Equals(email.ToLower()));
+        return member;
+    }
+
+    public Member GetMember(int id)
+    {
+        Member member = _context.Members.SingleOrDefault(m => m.Id == id);
         return member;
     }
 

@@ -40,6 +40,7 @@ public static class DIServices
 
         services.AddScoped<IMemberRepo, MemberRepo>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IMemberService, MemberService>();
 
         services.AddDbContext<ChillContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default")));
 
