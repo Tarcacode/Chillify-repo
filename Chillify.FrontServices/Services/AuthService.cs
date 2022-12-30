@@ -13,7 +13,7 @@ public class AuthService : IAuthService
 
     public async Task<ServiceResponse<int>> Register(RegisterModel registerModel)
     {
-        var dto = new RegisterDto()
+        RegisterDto dto = new()
         {
             EmailAddress = registerModel.EmailAddress,
             Pseudo = registerModel.Pseudo,

@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.FrontServices", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.FrontModels", "Chillify.FrontModels\Chillify.FrontModels.csproj", "{0ACB0E9E-A078-4798-AE66-677951351279}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillify.BackModels", "Chillify.BackModels\Chillify.BackModels.csproj", "{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chillify.BackModels", "Chillify.BackModels\Chillify.BackModels.csproj", "{3D91C4EA-DA7D-4273-8D22-A752F46CBA0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

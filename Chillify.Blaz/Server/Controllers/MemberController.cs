@@ -16,6 +16,7 @@ namespace Chillify.Blaz.Server.Controllers
         {
             _memberService = memberService;
         }
+
         [Authorize(Roles ="4, 5")]
         [HttpGet]
         [Route("get")]
@@ -25,6 +26,7 @@ namespace Chillify.Blaz.Server.Controllers
 
             return response.Success == false ? NotFound(response) : Ok(response);
         }
+
         [Authorize(Roles = "4, 5")]
         [HttpGet]
         [Route("get/{id:int}")]
