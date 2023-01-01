@@ -5,10 +5,12 @@ namespace Chillify.FrontServices.Services;
 public class AuthService : IAuthService
 {
     private readonly HttpClient _http;
+    private readonly ILocalStorage _localStorage;
 
-    public AuthService(HttpClient http)
+    public AuthService(HttpClient http, ILocalStorage localStorage)
 	{
         _http = http;
+        _localStorage = localStorage;
     }
 
     public async Task<ServiceResponse<int>> Register(RegisterModel registerModel)
@@ -33,8 +35,16 @@ public class AuthService : IAuthService
 
         ServiceResponse<string> result = await response.Content.ReadFromJsonAsync<ServiceResponse<string>>();
 
-        // TODO: Put here the JWT in the browser storage
-        // TODO: And look how to pass JWT in request header
+        if (result.Success)
+        {
+            _localStorage.SetToken(result.Data);
+        }
+
         return result;
+    }
+
+    public async Task Logout()
+    {
+        _localStorage.RemoveToken();
     }
 }

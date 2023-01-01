@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.JSInterop" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Chillify.Blaz\Shared\Chillify.Blaz.Shared.csproj" />
     <ProjectReference Include="..\Chillify.Entities\Chillify.Entities.csproj" />
     <ProjectReference Include="..\Chillify.FrontModels\Chillify.FrontModels.csproj" />

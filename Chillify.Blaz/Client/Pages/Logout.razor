@@ -1,12 +1,24 @@
 ﻿@page "/logout"
+@inject NavigationManager NavManager
+@inject IAuthService AuthService
 
 <PageTitle>Log out |Chillify</PageTitle>
 
 <h1>Logout</h1>
 <p>We are sad to see you leave. Are you sure you want to log out ?</p>
 
-<button class="btn btn-primary" title="Home">Return to Home</button>
-<button class="btn btn-outline-primary" title="Logout">Log out</button>
-@code {
+<button class="btn btn-primary" @onclick="GoHome" title="Home">Return to Home</button>
+<button class="btn btn-outline-primary" @onclick="Disconnect" title="Logout">Log out</button>
 
+@code {
+    private void GoHome()
+    {
+        NavManager.NavigateTo("/");
+    }
+
+    private async Task Disconnect()
+    {
+        await AuthService.Logout();
+        NavManager.NavigateTo("/signin");
+    }
 }
