@@ -111,7 +111,7 @@ public class AuthService : IAuthService
                 new Claim(ClaimTypes.Email, member.EmailAddress),
                 new Claim(ClaimTypes.Role, member.RoleId.ToString())
             }),
-            Expires = DateTime.UtcNow.AddMinutes(10),
+            Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials= new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
         };
 
