@@ -1,6 +1,20 @@
-﻿@inject IMemberService MemberService
+﻿@using System.Security.Claims;
+@inject IMemberService MemberService
 
 <h2 class="mt-3">User list</h2>
+<AuthorizeView Roles="4, 5">
+    <NotAuthorized>
+        <p>Sorry, but you are not authorized to see this content.
+            Your role is @context?.User?.Claims?.FirstOrDefault(c => c.Type == "role")?.Value
+            Are you in role ? @context?.User?.IsInRole("5")
+        </p>
+    </NotAuthorized>
+
+    <Authorized>
+        <p>Bravo! You are authorized @context?.User?.Claims?.FirstOrDefault(c => c.Type == "unique_name")?.Value
+            Your role is @context?.User?.Claims?.FirstOrDefault(c => c.Type == "role")?.Value
+            Are you in role ? @context?.User?.IsInRole("5")
+        </p>
 @if (_members.Count == 0)
 {
     <span>Loading user list...</span>
@@ -37,6 +51,8 @@ else
 
     </table>
 }
+    </Authorized>
+</AuthorizeView>
 
 @code {
     private List<Member> _members = new();
