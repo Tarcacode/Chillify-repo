@@ -118,10 +118,5 @@ public class AuthService : IAuthService
         SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
-
-        //return new JWToken()
-        //{
-        //    Token = tokenHandler.WriteToken(token)
-        //};
     }
 }

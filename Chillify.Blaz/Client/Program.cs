@@ -12,7 +12,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILocalStorage, LocalStorage>();
 builder.Services.AddScoped<IMemberService, MemberService>();
-builder.Services.AddAuthorizationCore();
+builder.Services.AddAuthorizationCore(options => 
+    {
+        options.AddPolicy("manager+", policy => policy.RequireClaim("role", "4", "5"));
+    });
 
 builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 

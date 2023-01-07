@@ -54,16 +54,11 @@ public class AuthService : IAuthService
     {
         string jwt = await _localStorage.GetToken();
 
-        // when jwt read it and return the claims principal?
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var securityToken = tokenHandler.ReadJwtToken(jwt);
+        JwtSecurityTokenHandler tokenHandler = new();
+        JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);
 
-        string name = securityToken.Claims.FirstOrDefault(c => c.Type == "unique_name")?.Value;
-        string email = securityToken.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
-        string role = securityToken.Claims.FirstOrDefault(c => c.Type == "role")?.Value;
-
-        var claims = securityToken.Claims;
-        var identity = new ClaimsIdentity(claims, "myAuthType");
+        IEnumerable<Claim> claims = securityToken.Claims;
+        ClaimsIdentity identity = new ClaimsIdentity(claims, "myAuthType");
 
         return new ClaimsPrincipal(identity);
     }

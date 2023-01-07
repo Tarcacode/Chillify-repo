@@ -13,16 +13,7 @@ public class AuthStateProvider : AuthenticationStateProvider
     }
     public async override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        await Task.Delay(1500);
-
-        //TODO: Read JWT here and put the claimprincipal in anonymous.
-        //List<Claim> claims = new()
-        //{
-
-        //};
-
-        //var anonymous = new ClaimsIdentity();
-        var claimsPrincipal = await _authService.GetClaimsPrincipal();
+        ClaimsPrincipal claimsPrincipal = await _authService.GetClaimsPrincipal();
         return await Task.FromResult(new AuthenticationState(claimsPrincipal));
     }
 
