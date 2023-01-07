@@ -1,7 +1,7 @@
-﻿global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
-namespace Chillify.FrontModels;
+namespace Chillify.Models.Front;
 
 public class RegisterModel
 {

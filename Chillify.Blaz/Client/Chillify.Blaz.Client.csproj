@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Chillify.FrontModels\Chillify.FrontModels.csproj" />
     <ProjectReference Include="..\..\Chillify.FrontServices\Chillify.FrontServices.csproj" />
+    <ProjectReference Include="..\..\Chillify.Models\Chillify.Models.csproj" />
     <ProjectReference Include="..\Shared\Chillify.Blaz.Shared.csproj" />
   </ItemGroup>
 

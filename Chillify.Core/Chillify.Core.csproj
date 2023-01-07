@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chillify.BackModels\Chillify.BackModels.csproj" />
     <ProjectReference Include="..\Chillify.Blaz\Shared\Chillify.Blaz.Shared.csproj" />
     <ProjectReference Include="..\Chillify.Dal\Chillify.Dal.csproj" />
+    <ProjectReference Include="..\Chillify.Models\Chillify.Models.csproj" />
   </ItemGroup>
 
 </Project>

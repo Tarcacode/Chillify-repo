@@ -6,4 +6,14 @@
 <h1>Users</h1>
 <p>You can find here the users management page.</p>
 
-<UserList />
+<AuthorizeView Policy="manager+">
+
+    <NotAuthorized>
+        <p>Sorry, but you are not authorized to see this content.</p>
+    </NotAuthorized>
+
+    <Authorized>
+        <UserList />
+    </Authorized>
+
+</AuthorizeView>

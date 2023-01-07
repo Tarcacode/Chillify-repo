@@ -2,50 +2,42 @@
 @inject IMemberService MemberService
 
 <h2 class="mt-3">User list</h2>
-<AuthorizeView Policy="manager+">
-    <NotAuthorized>
-        <p>Sorry, but you are not authorized to see this content.</p>
-    </NotAuthorized>
+@if (_members.Count == 0)
+{
+    <span>Loading user list...</span>
+}
+else
+{
+    <table class="table table-striped mt-4">
+        <thead class="table-primary">
+            <tr>
+                <th>Email</th>
+                <th>Pseudo</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Birth date</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-    <Authorized>
-        @if (_members.Count == 0)
-        {
-            <span>Loading user list...</span>
-        }
-        else
-        {
-            <table class="table table-striped mt-4">
-                <thead class="table-primary">
-                    <tr>
-                        <th>Email</th>
-                        <th>Pseudo</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Birth date</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+        <tbody>
+            @foreach (Member member in _members)
+            {
+                <tr>
+                    <td>@member.EmailAddress</td>
+                    <td>@member.Pseudo</td>
+                    <td>@(member.FirstName ?? "-")</td>
+                    <td>@(member.LastName ?? "-")</td>
+                    <td>@(member.BirthDate is null ? "-" : member.BirthDate)</td>
+                    <td>@member.RoleId</td>
+                    <td>Buttons later</td>
+                </tr>
+            }
+        </tbody>
 
-                <tbody>
-                    @foreach (Member member in _members)
-                    {
-                        <tr>
-                            <td>@member.EmailAddress</td>
-                            <td>@member.Pseudo</td>
-                            <td>@(member.FirstName ?? "-")</td>
-                            <td>@(member.LastName ?? "-")</td>
-                            <td>@(member.BirthDate is null ? "-" : member.BirthDate)</td>
-                            <td>@member.RoleId</td>
-                            <td>Buttons later</td>
-                        </tr>
-                    }
-                </tbody>
-
-            </table>
-        }
-    </Authorized>
-</AuthorizeView>
+    </table>
+}
 
 @code {
     private List<Member> _members = new();

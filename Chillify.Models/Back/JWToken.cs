@@ -1,5 +1,4 @@
-﻿
-namespace Chillify.BackModels;
+﻿namespace Chillify.Models.Back;
 
 public class JWToken
 {
