@@ -53,6 +53,10 @@ public class AuthService : IAuthService
     public async Task<ClaimsPrincipal> GetClaimsPrincipal()
     {
         string jwt = await _localStorage.GetToken();
+        if (string.IsNullOrEmpty(jwt))
+        {
+            return null;
+        }
 
         JwtSecurityTokenHandler tokenHandler = new();
         JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);

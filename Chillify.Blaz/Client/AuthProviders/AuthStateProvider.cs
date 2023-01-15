@@ -14,6 +14,12 @@ public class AuthStateProvider : AuthenticationStateProvider
     public async override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         ClaimsPrincipal claimsPrincipal = await _authService.GetClaimsPrincipal();
+        if (claimsPrincipal is null)
+        {
+            ClaimsIdentity anonymous = new();
+            ClaimsPrincipal principal = new(anonymous);
+            return await Task.FromResult(new AuthenticationState(principal));
+        }
 
         return await Task.FromResult(new AuthenticationState(claimsPrincipal));
     }
