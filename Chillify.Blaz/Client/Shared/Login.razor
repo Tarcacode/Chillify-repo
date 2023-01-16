@@ -1,4 +1,5 @@
 ﻿@inject IAuthService AuthService
+@inject NavigationManager NavManager
 
 <h2>Log in</h2>
 
@@ -16,7 +17,7 @@
 
         @if (string.IsNullOrEmpty(_message) == false)
         {
-            <span class="text-danger"> /!\ @_message</span>
+            <p class="@(successfulLogin ? "text-success" : "text-danger")">@_message</p>
         }
 
         <ValidationSummary />
@@ -26,18 +27,18 @@
 @code {
     private LoginDto _login = new();
     private string? _message;
+    private bool successfulLogin = false;
 
     private async Task HandleLogin()
     {
         ServiceResponse<string> result = await AuthService.Login(_login);
+        _message = result.Message;
 
-        if (result.Success == false)
+        if (result.Success)
         {
-            _message = result.Message;
-        }
-        else
-        {
+            successfulLogin = true;
             _login = new();
+            NavManager.NavigateTo("/");
         }
     }
 }

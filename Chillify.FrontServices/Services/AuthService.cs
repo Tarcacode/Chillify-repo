@@ -27,7 +27,6 @@ public class AuthService : IAuthService
         HttpResponseMessage response = await _http.PostAsJsonAsync("api/auth/register", dto);
 
         ServiceResponse<int> result = await response.Content.ReadFromJsonAsync<ServiceResponse<int>>();
-
         return result;
     }
 

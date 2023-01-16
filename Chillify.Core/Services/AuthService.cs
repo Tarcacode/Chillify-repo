@@ -47,7 +47,8 @@ public class AuthService : IAuthService
             int id = _memberRepo.Add(member);
             return new ServiceResponse<int>()
             {
-                Data = id
+                Data = id,
+                Message = "Successful registration."
             };
         }
     }

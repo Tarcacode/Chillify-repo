@@ -22,9 +22,12 @@
 
         @if (string.IsNullOrEmpty(_message) == false)
         {
-            <span class="text-danger"> /!\ @_message</span>
+            <p class="@(successfulRegistration ? "text-success" : "text-danger")"> @_message</p>
+            @if (successfulRegistration)
+            {
+                <p>You can now click on Log in to access Chillify</p>
+            }
         }
-
         <ValidationSummary />
     </EditForm>
 </div>
@@ -32,18 +35,17 @@
 @code {
     private RegisterModel _registerModel = new();
     private string? _message;
+    private bool successfulRegistration = false;
 
     private async Task HandleRegistration()
     {
         ServiceResponse<int> result = await AuthService.Register(_registerModel);
+        _message = result.Message;
 
-        if (result.Success == false)
-        {
-            _message = result.Message;
-        }
-        else
+        if (result.Success)
         {
             _registerModel = new();
+            successfulRegistration = true;
         }
     }
 }
