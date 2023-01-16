@@ -1,6 +1,6 @@
 ﻿@inject IAuthService AuthService
 @inject NavigationManager NavManager
-
+@inject AuthStateProvider AuthStateProvider
 <h2>Log in</h2>
 
 <div>
@@ -37,6 +37,7 @@
         if (result.Success)
         {
             successfulLogin = true;
+            AuthStateProvider.NotifyAuthenticationStateChanged();
             _login = new();
             NavManager.NavigateTo("/");
         }

@@ -17,7 +17,8 @@ builder.Services.AddAuthorizationCore(options =>
         options.AddPolicy("manager+", policy => policy.RequireClaim("role", "4", "5"));
     });
 
-builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+builder.Services.AddScoped<AuthStateProvider>();
+builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<AuthStateProvider>());
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

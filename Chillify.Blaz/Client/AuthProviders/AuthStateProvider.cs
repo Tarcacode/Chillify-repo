@@ -11,7 +11,7 @@ public class AuthStateProvider : AuthenticationStateProvider
     {
         _authService = authService;
     }
-    public async override Task<AuthenticationState> GetAuthenticationStateAsync()
+    public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         ClaimsPrincipal claimsPrincipal = await _authService.GetClaimsPrincipal();
         if (claimsPrincipal is null)
@@ -23,5 +23,8 @@ public class AuthStateProvider : AuthenticationStateProvider
 
         return await Task.FromResult(new AuthenticationState(claimsPrincipal));
     }
-
+    public void NotifyAuthenticationStateChanged()
+    {
+        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+    }
 }

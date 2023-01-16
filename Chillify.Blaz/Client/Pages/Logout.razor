@@ -1,6 +1,8 @@
 ﻿@page "/logout"
+@attribute [Authorize]
 @inject NavigationManager NavManager
 @inject IAuthService AuthService
+@inject AuthStateProvider AuthStateProvider
 
 <PageTitle>Log out |Chillify</PageTitle>
 
@@ -19,6 +21,7 @@
     private async Task Disconnect()
     {
         await AuthService.Logout();
+        AuthStateProvider.NotifyAuthenticationStateChanged();
         NavManager.NavigateTo("/signin");
     }
 }
