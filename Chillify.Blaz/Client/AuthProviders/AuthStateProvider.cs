@@ -5,15 +5,15 @@ namespace Chillify.Blaz.Client.AuthProviders;
 
 public class AuthStateProvider : AuthenticationStateProvider
 {
-    private readonly IAuthService _authService;
+    private readonly ILocalStorage _localStorage;
 
-    public AuthStateProvider(IAuthService authService)
+    public AuthStateProvider(ILocalStorage localStorage)
     {
-        _authService = authService;
+        _localStorage = localStorage;
     }
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        ClaimsPrincipal claimsPrincipal = await _authService.GetClaimsPrincipal();
+        ClaimsPrincipal claimsPrincipal = await _localStorage.GetClaimsPrincipal();
         if (claimsPrincipal is null)
         {
             ClaimsIdentity anonymous = new();

@@ -1,4 +1,6 @@
-﻿namespace Chillify.FrontServices.Interfaces;
+﻿using System.Security.Claims;
+
+namespace Chillify.FrontServices.Interfaces;
 
 public interface ILocalStorage
 {
@@ -6,4 +8,6 @@ public interface ILocalStorage
     Task<string> GetToken();
     Task RemoveToken();
     Task<bool> HasToken();
+    Task<ClaimsPrincipal> GetClaimsPrincipal();
+    Task<bool> RemoveJwtIfExpired();
 }

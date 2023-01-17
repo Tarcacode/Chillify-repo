@@ -8,5 +8,4 @@ public interface IAuthService
     Task<ServiceResponse<int>> Register(RegisterModel registerModel);
     Task<ServiceResponse<string>> Login(LoginDto loginDto);
     Task Logout();
-    Task<ClaimsPrincipal> GetClaimsPrincipal();
 }

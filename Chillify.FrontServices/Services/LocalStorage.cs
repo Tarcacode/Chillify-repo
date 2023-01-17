@@ -1,5 +1,7 @@
 ﻿using Chillify.FrontServices.Interfaces;
 using Microsoft.JSInterop;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace Chillify.FrontServices.Services;
@@ -33,5 +35,54 @@ public class LocalStorage : ILocalStorage
         string token = await GetToken();
 
         return token != string.Empty;
+    }
+
+    public async Task<ClaimsPrincipal> GetClaimsPrincipal()
+    {
+        string jwt = await GetToken();
+        if (string.IsNullOrEmpty(jwt))
+        {
+            return null;
+        }
+
+        JwtSecurityTokenHandler tokenHandler = new();
+        JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);
+
+        IEnumerable<Claim> claims = securityToken.Claims;
+        ClaimsIdentity identity = new ClaimsIdentity(claims, "myAuthType");
+
+        return new ClaimsPrincipal(identity);
+    }
+    
+    public async Task<bool> RemoveJwtIfExpired()
+    {
+        string jwt = await GetToken();
+        if (string.IsNullOrEmpty(jwt))
+        {
+            return false;
+        }
+
+        bool expired = IsJwtExpired(jwt);
+        if (expired == false)
+        {
+            return false;
+        }
+        else
+        {
+            await RemoveToken();
+            return true;
+        }
+    }
+    private bool IsJwtExpired(string jwt)
+    {
+        JwtSecurityTokenHandler tokenHandler = new();
+        JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);
+        DateTime expiration = securityToken.ValidTo;
+        if (DateTime.UtcNow >= expiration)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

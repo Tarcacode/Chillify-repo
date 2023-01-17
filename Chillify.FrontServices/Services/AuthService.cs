@@ -48,21 +48,4 @@ public class AuthService : IAuthService
     {
         _localStorage.RemoveToken();
     }
-
-    public async Task<ClaimsPrincipal> GetClaimsPrincipal()
-    {
-        string jwt = await _localStorage.GetToken();
-        if (string.IsNullOrEmpty(jwt))
-        {
-            return null;
-        }
-
-        JwtSecurityTokenHandler tokenHandler = new();
-        JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);
-
-        IEnumerable<Claim> claims = securityToken.Claims;
-        ClaimsIdentity identity = new ClaimsIdentity(claims, "myAuthType");
-
-        return new ClaimsPrincipal(identity);
-    }
 }

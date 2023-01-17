@@ -17,7 +17,25 @@ public class MemberService : IMemberService
 
     public async Task<ServiceResponse<List<Member>>> GetMembers()
     {
+        bool isRemoved = await _localStorage.RemoveJwtIfExpired();
+        if (isRemoved)
+        {
+            return new ServiceResponse<List<Member>>()
+            {
+                Success = false,
+                Message = "Token expired."
+            };
+        }
+
         string token = await _localStorage.GetToken();
+        if (string.IsNullOrEmpty(token))
+        {
+            return new ServiceResponse<List<Member>>()
+            {
+                Success = false,
+                Message = "No Token found."
+            };
+        }
 
         _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
