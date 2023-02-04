@@ -112,7 +112,7 @@ public class AuthService : IAuthService
                 new Claim(ClaimTypes.Email, member.EmailAddress),
                 new Claim(ClaimTypes.Role, member.RoleId.ToString())
             }),
-            Expires = DateTime.UtcNow.AddSeconds(60),
+            Expires = DateTime.UtcNow.AddMinutes(20),
             SigningCredentials= new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
         };
 

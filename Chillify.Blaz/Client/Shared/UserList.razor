@@ -5,6 +5,10 @@
 @if (_members.Count == 0)
 {
     <span>Loading user list...</span>
+    @if (string.IsNullOrEmpty(_message) == false)
+    {
+        <p class="text-danger">@_message</p>
+    }
 }
 else
 {

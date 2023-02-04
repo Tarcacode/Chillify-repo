@@ -24,7 +24,7 @@ public class LocalStorage : ILocalStorage
     {
         string token = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", _TOKENNAME);
 
-        return token is null ? string.Empty : JsonSerializer.Deserialize<string>(token);
+        return string.IsNullOrEmpty(token) ? string.Empty : JsonSerializer.Deserialize<string>(token);
     }
     public async Task RemoveToken()
     {
@@ -53,8 +53,37 @@ public class LocalStorage : ILocalStorage
 
         return new ClaimsPrincipal(identity);
     }
-    
-    public async Task<bool> RemoveJwtIfExpired()
+
+    public async Task<FrontTokenValidation> TokenValidation()
+    {
+        bool isRemoved = await RemoveJwtIfExpired();
+        if (isRemoved)
+        {
+            return new FrontTokenValidation()
+            {
+                Success = false,
+                Message = "Token expired."
+            };
+        }
+
+        string token = await GetToken();
+
+        if (string.IsNullOrEmpty(token))
+        {
+            return new FrontTokenValidation()
+            {
+                Success = false,
+                Message = "No Token found."
+            };
+        }
+
+        return new FrontTokenValidation()
+        {
+            Success = true,
+            Token = token
+        };
+    }
+    private async Task<bool> RemoveJwtIfExpired()
     {
         string jwt = await GetToken();
         if (string.IsNullOrEmpty(jwt))
@@ -78,11 +107,6 @@ public class LocalStorage : ILocalStorage
         JwtSecurityTokenHandler tokenHandler = new();
         JwtSecurityToken securityToken = tokenHandler.ReadJwtToken(jwt);
         DateTime expiration = securityToken.ValidTo;
-        if (DateTime.UtcNow >= expiration)
-        {
-            return true;
-        }
-
-        return false;
+        return DateTime.UtcNow >= expiration;
     }
 }

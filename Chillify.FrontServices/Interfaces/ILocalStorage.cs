@@ -9,5 +9,5 @@ public interface ILocalStorage
     Task RemoveToken();
     Task<bool> HasToken();
     Task<ClaimsPrincipal> GetClaimsPrincipal();
-    Task<bool> RemoveJwtIfExpired();
+    Task<FrontTokenValidation> TokenValidation();
 }

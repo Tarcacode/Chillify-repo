@@ -17,27 +17,18 @@ public class MemberService : IMemberService
 
     public async Task<ServiceResponse<List<Member>>> GetMembers()
     {
-        bool isRemoved = await _localStorage.RemoveJwtIfExpired();
-        if (isRemoved)
+        FrontTokenValidation tokenValidation = await _localStorage.TokenValidation();
+
+        if (tokenValidation.Success == false)
         {
             return new ServiceResponse<List<Member>>()
             {
                 Success = false,
-                Message = "Token expired."
+                Message = "Authentication problem, please login again."
             };
         }
 
-        string token = await _localStorage.GetToken();
-        if (string.IsNullOrEmpty(token))
-        {
-            return new ServiceResponse<List<Member>>()
-            {
-                Success = false,
-                Message = "No Token found."
-            };
-        }
-
-        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenValidation.Token);
 
         var response = await _http.GetFromJsonAsync<ServiceResponse<List<Member>>>("api/member/get");
 
