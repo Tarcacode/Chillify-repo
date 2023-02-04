@@ -28,11 +28,17 @@ public class MemberService : IMemberService
             };
         }
 
-        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenValidation.Token);
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri("https://localhost:7089/api/member/get")
+        };
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenValidation.Token);
 
-        var response = await _http.GetFromJsonAsync<ServiceResponse<List<Member>>>("api/member/get");
+        using HttpResponseMessage response = await _http.SendAsync(request);
 
-        if (response is null)
+
+        if (response is null || response.IsSuccessStatusCode == false)
         {
             return new ServiceResponse<List<Member>>()
             {
@@ -42,7 +48,7 @@ public class MemberService : IMemberService
         } 
         else
         {
-            return response;
+            return await response.Content.ReadFromJsonAsync<ServiceResponse<List<Member>>>();
         }
     }
 }
