@@ -18,9 +18,6 @@ else
             <tr>
                 <th>Email</th>
                 <th>Pseudo</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Birth date</th>
                 <th>Role</th>
                 <th>Actions</th>
             </tr>
@@ -32,11 +29,8 @@ else
                 <tr>
                     <td>@member.EmailAddress</td>
                     <td>@member.Pseudo</td>
-                    <td>@(member.FirstName ?? "-")</td>
-                    <td>@(member.LastName ?? "-")</td>
-                    <td>@(member.BirthDate is null ? "-" : member.BirthDate)</td>
                     <td>@member.RoleId</td>
-                    <td><button @onclick="() => NavigateToDetails(member.Id)" class="btn btn-primary"><img src="images/icons/details.svg" alt="details" /></button></td>
+                    <td><button @onclick="() => NavigateToDetails(member.Id)" class="btn btn-primary" title="Details"><img src="images/icons/details.svg" alt="Details" /></button></td>
                 </tr>
             }
         </tbody>

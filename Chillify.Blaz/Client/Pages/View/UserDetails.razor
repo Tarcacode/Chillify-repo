@@ -1,9 +1,13 @@
 ﻿@page "/userdetails/{UserId:int}"
+
 @inject IMemberService MemberService
+@inject NavigationManager NavManager
+
 @attribute [Authorize(Policy = "manager+")]
 
 <PageTitle>User Details |Chillify</PageTitle>
 
+<button onclick="@NavigateToUsers" class="btn btn-primary" title="Go back"><img src="images/icons/back.svg" alt="Go back" /></button>
 <h1 class="mt-3">User details</h1>
 @if (_member is null || string.IsNullOrEmpty(_member.EmailAddress))
 {
@@ -11,13 +15,13 @@
 }
 else 
 {
-    <ul>
-        <li>Pseudo: @_member.Pseudo</li>
-        <li>Email: @_member.EmailAddress</li>
-        <li>First name: @(_member.FirstName ?? "No details")</li>
-        <li>Last name: @(_member.LastName ?? "No details")</li>
-        <li>Birth date: @(_member.BirthDate?.ToString() ?? "No details")</li>
-        <li>Role: @_member.RoleId</li>
+    <ul class="list-group">
+        <li class="list-group-item">Pseudo: @_member.Pseudo</li>
+        <li class="list-group-item">Email: @_member.EmailAddress</li>
+        <li class="list-group-item">First name: @(_member.FirstName ?? "No details")</li>
+        <li class="list-group-item">Last name: @(_member.LastName ?? "No details")</li>
+        <li class="list-group-item">Birth date: @(_member.BirthDate?.ToString() ?? "No details")</li>
+        <li class="list-group-item">Role: @_member.RoleId</li>
     </ul>
 }
 
@@ -40,5 +44,9 @@ else
         {
             _member = result.Data;
         }
+    }
+    private void NavigateToUsers()
+    {
+        NavManager.NavigateTo("/users");
     }
 }
