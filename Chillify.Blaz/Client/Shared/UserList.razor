@@ -1,5 +1,6 @@
 ﻿@using System.Security.Claims;
 @inject IMemberService MemberService
+@inject NavigationManager NavManager
 
 <h2 class="mt-3">User list</h2>
 @if (_members.Count == 0)
@@ -35,7 +36,7 @@ else
                     <td>@(member.LastName ?? "-")</td>
                     <td>@(member.BirthDate is null ? "-" : member.BirthDate)</td>
                     <td>@member.RoleId</td>
-                    <td>Buttons later</td>
+                    <td><button @onclick="() => NavigateToDetails(member.Id)" class="btn btn-primary"><img src="images/icons/details.svg" alt="details" /></button></td>
                 </tr>
             }
         </tbody>
@@ -59,5 +60,10 @@ else
         {
             _members = result.Data;
         }
+    }
+
+    private void NavigateToDetails(int memberId)
+    {
+        NavManager.NavigateTo($"/userdetails/{memberId}");
     }
 }

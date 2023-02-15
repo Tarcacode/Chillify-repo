@@ -1,0 +1,44 @@
+﻿@page "/userdetails/{UserId:int}"
+@inject IMemberService MemberService
+@attribute [Authorize(Policy = "manager+")]
+
+<PageTitle>User Details |Chillify</PageTitle>
+
+<h1 class="mt-3">User details</h1>
+@if (_member is null || string.IsNullOrEmpty(_member.EmailAddress))
+{
+   <p class="text-danger">User not found.</p>
+}
+else 
+{
+    <ul>
+        <li>Pseudo: @_member.Pseudo</li>
+        <li>Email: @_member.EmailAddress</li>
+        <li>First name: @(_member.FirstName ?? "No details")</li>
+        <li>Last name: @(_member.LastName ?? "No details")</li>
+        <li>Birth date: @(_member.BirthDate?.ToString() ?? "No details")</li>
+        <li>Role: @_member.RoleId</li>
+    </ul>
+}
+
+@code {
+    [Parameter]
+    public int UserId { get; set; }
+
+    private Member _member = new();
+    private string? _message;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var result = await MemberService.GetMember(UserId);
+
+        if (result.Success == false)
+        {
+            _message = result.Message;
+        }
+        else
+        {
+            _member = result.Data;
+        }
+    }
+}
