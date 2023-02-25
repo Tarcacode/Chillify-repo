@@ -16,16 +16,14 @@ public class MemberRepo : IMemberRepo
     {
         return _context.Members.ToList();
     }
-    public Member GetMember(string email)
+    public Member GetMemberByEmail(string email)
     {
-        Member member = _context.Members.SingleOrDefault(m => m.EmailAddress.ToLower().Equals(email.ToLower()));
-        return member;
+        return _context.Members.SingleOrDefault(m => m.EmailAddress.ToLower().Equals(email.ToLower()));
     }
 
-    public Member GetMember(int id)
+    public Member GetMemberById(int id)
     {
-        Member member = _context.Members.SingleOrDefault(m => m.Id == id);
-        return member;
+        return _context.Members.SingleOrDefault(m => m.Id == id);
     }
 
     public int Add(Member member)

@@ -30,7 +30,7 @@ namespace Chillify.Blaz.Server.Controllers
         [HttpGet("get/{id:int}")]
         public IActionResult GetMemberById([FromRoute] int id)
         {
-            ServiceResponse<Member> response = _memberService.GetMember(id);
+            ServiceResponse<Member> response = _memberService.GetMemberById(id);
 
             return response.Success == false ? NotFound(response) : Ok(response);
         }

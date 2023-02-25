@@ -29,9 +29,9 @@ public class MemberService : IMemberService
         return response;
     }
 
-    public ServiceResponse<Member> GetMember(int id)
+    public ServiceResponse<Member> GetMemberById(int id)
     {
-        Member member = _memberRepo.GetMember(id);
+        Member member = _memberRepo.GetMemberById(id);
 
         ServiceResponse<Member> response = new();
 

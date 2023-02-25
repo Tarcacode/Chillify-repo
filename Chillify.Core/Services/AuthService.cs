@@ -56,7 +56,7 @@ public class AuthService : IAuthService
     public ServiceResponse<string> Login(LoginDto loginDto)
     {
         ServiceResponse<string> response = new();
-        Member member = _memberRepo.GetMember(loginDto.EmailAddress.Trim());
+        Member member = _memberRepo.GetMemberByEmail(loginDto.EmailAddress.Trim());
         if (member is null)
         {
             response.Success = false;
