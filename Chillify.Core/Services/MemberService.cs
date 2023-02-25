@@ -47,4 +47,9 @@ public class MemberService : IMemberService
 
         return response;
     }
+
+    public ServiceResponse<bool> Edit(int id, Member member)
+    {
+        return new ServiceResponse<bool>();
+    }
 }

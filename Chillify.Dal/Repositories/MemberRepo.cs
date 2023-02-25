@@ -34,6 +34,15 @@ public class MemberRepo : IMemberRepo
         return member.Id;
     }
 
+    public bool Edit(int id, Member member)
+    {
+        Member dbMember = _context.Members.SingleOrDefault(m => m.Id == id);
+        dbMember = member;
+        int entries =_context.SaveChanges();
+
+        return entries > 0;
+    }
+
     public bool EmailExist(string email)
     {
         return _context.Members.Any(m => m.EmailAddress.ToLower().Equals(email.ToLower()));

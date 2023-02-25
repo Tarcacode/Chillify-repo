@@ -8,4 +8,5 @@ public interface IMemberRepo
     bool EmailExist(string email);
     bool PseudoExist(string pseudo);
     int Add(Member member);
+    bool Edit(int id, Member member);
 }
