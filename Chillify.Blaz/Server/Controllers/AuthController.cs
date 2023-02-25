@@ -17,8 +17,7 @@ namespace Chillify.Blaz.Server.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
-        [Route("register")]
+        [HttpPost("register")]
         public IActionResult Register(RegisterDto registerDto)
         {
             ServiceResponse<int> response = _authService.Register(registerDto);
@@ -26,8 +25,7 @@ namespace Chillify.Blaz.Server.Controllers
             return response.Success == false ? BadRequest(response) : Ok(response);
         }
 
-        [HttpPost]
-        [Route("login")]
+        [HttpPost("login")]
         public IActionResult Login(LoginDto loginDto)
         {
             ServiceResponse<string> response = _authService.Login(loginDto);

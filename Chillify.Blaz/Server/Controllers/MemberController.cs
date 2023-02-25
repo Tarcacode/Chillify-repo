@@ -18,8 +18,7 @@ namespace Chillify.Blaz.Server.Controllers
         }
 
         [Authorize(Roles ="4, 5")]
-        [HttpGet]
-        [Route("get")]
+        [HttpGet("get")]
         public IActionResult GetMembers()
         {
             ServiceResponse<List<Member>> response = _memberService.GetMembers();
@@ -28,9 +27,8 @@ namespace Chillify.Blaz.Server.Controllers
         }
 
         [Authorize(Roles = "4, 5")]
-        [HttpGet]
-        [Route("get/{id:int}")]
-        public IActionResult GetMember([FromRoute] int id)
+        [HttpGet("get/{id:int}")]
+        public IActionResult GetMemberById([FromRoute] int id)
         {
             ServiceResponse<Member> response = _memberService.GetMember(id);
 
